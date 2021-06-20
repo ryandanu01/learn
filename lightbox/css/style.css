@@ -1,0 +1,197 @@
+/* style utama */
+body {
+    font: 18px/36px 'Arial Narrow', arial, sans-serif;
+    background-color: #666;
+}
+.shadow{
+    font-size: 80px;
+    margin: 50px 0;
+    text-align: center;
+    color: green;
+    text-shadow: 0 0 10px yellow;
+    opacity: 0;
+    animation: kiriKeKanan .5s 1s forwards;
+}
+.container {
+    width: 600px;
+    background-image:linear-gradient(to right, yellow, green);
+    margin: auto;
+    padding: 25px;
+    box-shadow: 0 0 3px 3px rgba(240, 235, 235, 0.981);
+    border-radius: 5px;
+}
+.gallery li {
+    width: 120px;
+    height: 120px;
+    /* overflow: hidden; */
+    border: 3px solid rgb(118, 115, 115);
+    float: left;
+    margin-right: 20px;
+     border-radius: 50%;
+    position: relative;
+}
+.gallery img{
+     border-radius: 50%;
+}
+.gallery .thumbs{
+    border-radius: 50%;
+}
+.gallery li span{
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200, 200, 200, .5);
+    top: 0;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 120px;
+    color: limegreen;
+    font: bold;
+    text-shadow: 1px 1px 1px #ddd;
+    opacity: 0;
+    transition: .3s;
+    transform: scale(0) rotate(0);
+}
+.gallery li a:hover span{
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+.clear {
+    clear: both;
+}
+/* overlay */
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0,0);
+    z-index: 9999;
+    transition: 1s;
+    transform: scale(0) rotate(0);
+    text-align: center;
+    padding: 100px 0;
+}
+.overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0,.8);
+    transform: scale(1) rotate(360deg);
+}
+.overlay img{
+    max-height: 100%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0.5);
+    border-radius: 0%;
+}
+.overlay:target {
+    animation: zoomDownFade 1s;
+}
+.overlay .close {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-left: 158px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border: 1px solid white;
+    line-height: 20px;
+    border-radius: 5px;
+    padding: 2px;
+    opacity: 0;
+}
+.overlay:target .close {
+    animation: slideDownFade .5s 1.5s forwards;
+}
+.overlay:target .next {
+    animation: fadeNextKanan .5s 1.5s forwards;
+}
+.overlay:target .prev {
+    animation: fadeNextKiri .5s 1.5s forwards;
+}
+/* navigasi */
+.next {
+    width: 57px;
+    height: 93px;
+    position: absolute;
+    top:45%;
+    margin-left: 20px;
+    opacity: 0;
+    font-size: 80px;
+    text-decoration: none;
+    color: white;
+}
+.prev {
+    width: 57px;
+    height: 93px;
+    font-size: 80px;
+    position: absolute;
+    top:45%;
+    opacity: 0;
+    margin-left: -100px;
+    text-decoration: none;
+    color: white;
+}
+/* animasi */
+
+@keyframes fadeNextKiri{
+    0%{
+        opacity: 0;
+        margin-left: -3000px;
+
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeNextKanan{
+    0%{
+        opacity: 0;
+        margin-left: 3000px;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes zoomDanFade{
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        margin-top: -100px;
+        margin-left: 3000px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+@keyframes kiriKeKanan {
+    0%{
+        opacity: 0;
+        margin-left: 3000px;
+        transform: rotate(160deg);
+    }
+    50%{
+        transform: rotate(80deg);
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
